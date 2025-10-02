@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.welcome-container {
+    background: #94A4B4;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+.welcome-title {
+    color: #FFF;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+    font-family: Merriweather, sans-serif;
+    font-size: 128px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    width: 535px;
+    height: 362px;
+    flex-shrink: 0;
+}
