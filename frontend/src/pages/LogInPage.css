@@ -1,10 +1,55 @@
-.logIn-container{
-    background-color: white;
+
+.logIn {
+    width: 100vw;
+    min-height: 100vh;
     background-image: url(../Images/stripedBG.png);
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+.logIn h1 {
+    text-align: center;
+    font-size: 64px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    font-family: Indie, cursive;
+    font-weight: normal;
+    color: #333333;
 }
 
-.logIn-container img {
+/*hold paper & text*/
+.paperContainer {
+    position: relative;
+    display: inline-block;
+    margin-top: 100px;
+    margin-left:-100px;
+}
+
+.paperInfo{
+    width: 750px;
+    height: auto;
+    display: block;
 
 }
+.paperText {
+    position: absolute;
+    top: 200px;
+    left: 56%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    font-size: 32px;
+    font-family: 'Indie Flower', cursive;
+    color: black;
+
+
+}
+
+
+
+
 
