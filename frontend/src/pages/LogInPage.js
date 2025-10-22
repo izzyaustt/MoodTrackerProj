@@ -17,6 +17,9 @@ function LogInPage() {
                     <p>name______________</p>
                     <p>email______________</p>
                     <p>password___________</p>
+                    <div className="logInButton">
+                        <p>login</p>
+                    </div>
                 </div>
             </div>
         </div>

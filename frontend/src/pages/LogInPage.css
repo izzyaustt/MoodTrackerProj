@@ -46,6 +46,21 @@
     font-family: 'Indie Flower', cursive;
     color: black;
 
+}
+.logInButton {
+    font-family: 'Indie Flower', cursive;
+    font-size: 24px;
+    color: black;
+    text-align: center;
+    transform: translate(135px,50px);
+    border-style:solid;
+    width: 25%;
+    border-radius: 255px 35px 225px 45px/25px 255px 35px 255px;
+
+
+
+
+;
 
 }
 
