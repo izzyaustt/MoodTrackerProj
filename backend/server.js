@@ -11,7 +11,10 @@ const db_uri = `mongodb+srv://${process.env.db_user}:${encodeURIComponent(proces
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true,
+}));
 
 // Session setup
 app.use(session({

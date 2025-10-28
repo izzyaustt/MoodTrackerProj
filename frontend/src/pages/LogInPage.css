@@ -25,7 +25,8 @@
 /*hold paper & text*/
 .paperContainer {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     margin-top: 100px;
     margin-left:-100px;
 }
@@ -45,7 +46,21 @@
     font-size: 32px;
     font-family: 'Indie Flower', cursive;
     color: black;
+    gap: 30px;
+    text-align: center;
 
+
+}
+
+.paperText input{
+    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
+    padding: 14px 20px;
+    border-radius: 25px;
+    border: 2px solid #333333;
+    background-color: #fef9f3; /* off-white to match paper texture */
+    width: 100%;
+    box-sizing: border-box;
 }
 .logInButton {
     font-family: 'Indie Flower', cursive;
@@ -56,15 +71,37 @@
     border-style:solid;
     width: 25%;
     border-radius: 255px 35px 225px 45px/25px 255px 35px 255px;
-
-
-
-
-;
-
 }
 
+.logInButton:hover {
+    background-color: #e0e0e0;
+}
 
+.toggleMessage{
+    font-family: 'Indie Flower', cursive;
+    font-size: 28px;
+    text-align: center;
+    color: #333333;
+    margin-top: 40px;
+}
+
+.statusMessage {
+    font-family: 'Indie Flower', cursive;
+    font-size: 24px;
+    color: #d9534f;      /* red for errors, you can change to green for success */
+    text-align: center;
+    margin: 20px 0;
+}
+
+.toggleLink {
+    font-family: 'Indie Flower', cursive;
+    font-size: 26px;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: underline; /* underlined so users know it's clickable */
+}
 
 
 
