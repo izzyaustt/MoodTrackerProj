@@ -8,7 +8,7 @@ router.get('/quotes', async (req, res) => {
         const response = await axios.get('https://api.quotable.io/random');
         res.json(response.data);
     } catch (err) {
-        res.status(500).json({ message: 'Failed to fetch quote' });
+        res.status(500).json({ message: 'Failed to fetch quote :(' });
     }
 });
 
@@ -23,7 +23,7 @@ router.get('/question', async (req, res) => {
             incorrect_answers: question.incorrect_answers
         });
     } catch (err) {
-        res.status(500).json({ message: 'Failed to fetch question' });
+        res.status(500).json({ message: 'Failed to fetch question :(' });
     }
 });
 
