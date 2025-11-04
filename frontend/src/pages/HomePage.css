@@ -1,0 +1,105 @@
+/* general layout */
+.homepage {
+    background-color: #F0EEE5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter", sans-serif;
+}
+
+/* date bar */
+.date-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.date {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    color: #1D417B;
+}
+
+.icons {
+    position: absolute;
+    right: 3rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.icon {
+    font-size: 1.8rem;
+    color: #222;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* grid of 4 boxes */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 320px);
+    grid-template-rows: 320px;
+    gap: 1.5rem 2rem;
+    justify-content: start;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.box-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+    margin-left: 0.3rem;
+    opacity: 0.8;
+    text-align: center;
+}
+
+.box {
+    width: 240px;
+    height: 240px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.box1 {
+    background-color: #fff9cc; /* yellow */
+}
+
+.box2 {
+    background-color: #CADBBB; /* green */
+}
+
+.box3 {
+    background-color: #FCE2E3; /* pink */
+}
+
+.box4 {
+    background-color: #CDDAFD; /* blue */
+}
