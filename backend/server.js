@@ -34,10 +34,12 @@ mongoose.connect(db_uri)
 const authRoutes = require('./routes/auth');
 const moodRoutes = require('./routes/mood');
 const apiRoutes = require('./routes/api');
+const emotionRoutes = require('./routes/emotion');
 
 app.use('/auth', authRoutes);
 app.use('/mood', moodRoutes);
 app.use('/api', apiRoutes);
+app.use('/emotions', emotionRoutes);
 
 app.get('/', (req, res) => res.send('Hello backend!'));
 
