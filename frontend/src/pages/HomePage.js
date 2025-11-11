@@ -10,28 +10,44 @@ function HomePage() {
         day: "numeric",
     });
 
+    // Fallback emotions if backend is not available
+    const fallbackEmotions = [
+        { _id: 'fallback1', name: 'Happy', description: '😊 Feeling joyful and content' },
+        { _id: 'fallback2', name: 'Sad', description: '😢 Feeling down or melancholic' },
+        { _id: 'fallback3', name: 'Angry', description: '😠 Feeling frustrated or upset' },
+        { _id: 'fallback4', name: 'Anxious', description: '😰 Feeling worried or nervous' },
+        { _id: 'fallback5', name: 'Tired', description: '😴 Feeling exhausted or sleepy' },
+        { _id: 'fallback6', name: 'Calm', description: '😌 Feeling peaceful and relaxed' }
+    ];
+
     // State for API data
     const [quote, setQuote] = useState("Loading quote...");
     const [question, setQuestion] = useState("Loading question...");
     const [quickWrite, setQuickWrite] = useState("");
     const [questionAnswer, setQuestionAnswer] = useState("");
     const [selectedEmotion, setSelectedEmotion] = useState("");
-    const [emotions, setEmotions] = useState([]);
+    const [emotions, setEmotions] = useState(fallbackEmotions);
     const [currentEntryId, setCurrentEntryId] = useState(null);
     const [isSaving, setIsSaving] = useState(false);
 
-    // Fetch emotions from backend
+    // Fetch emotions from backend (with fallback)
     useEffect(() => {
         fetch("http://localhost:5000/emotions")
             .then(res => res.json())
             .then(data => {
-                setEmotions(data);
-                if (data.length > 0 && !selectedEmotion) {
-                    setSelectedEmotion(data[0]._id);
+                if (data && data.length > 0) {
+                    setEmotions(data);
+                    if (!selectedEmotion) {
+                        setSelectedEmotion(data[0]._id);
+                    }
                 }
             })
             .catch(err => {
-                console.error("Error fetching emotions:", err);
+                console.error("Error fetching emotions from backend, using fallback:", err);
+                // Keep fallback emotions that were set in initial state
+                if (!selectedEmotion && fallbackEmotions.length > 0) {
+                    setSelectedEmotion(fallbackEmotions[0]._id);
+                }
             });
     }, []);
 
@@ -40,11 +56,15 @@ function HomePage() {
         fetch("http://localhost:5000/api/quotes")
             .then(res => res.json())
             .then(data => {
-                setQuote(`"${data.content}" - ${data.author}`);
+                if (data && data.content && data.author) {
+                    setQuote(`"${data.content}" - ${data.author}`);
+                } else {
+                    setQuote('"Be yourself; everyone else is already taken." - Oscar Wilde');
+                }
             })
             .catch(err => {
                 console.error("Error fetching quote:", err);
-                setQuote("Could not load quote");
+                setQuote('"The only way to do great work is to love what you do." - Steve Jobs');
             });
     }, []);
 
@@ -53,14 +73,18 @@ function HomePage() {
         fetch("http://localhost:5000/api/question")
             .then(res => res.json())
             .then(data => {
-                // Decode HTML entities
-                const parser = new DOMParser();
-                const decodedQuestion = parser.parseFromString(data.question, 'text/html').body.textContent;
-                setQuestion(decodedQuestion);
+                if (data && data.question) {
+                    // Decode HTML entities
+                    const parser = new DOMParser();
+                    const decodedQuestion = parser.parseFromString(data.question, 'text/html').body.textContent;
+                    setQuestion(decodedQuestion);
+                } else {
+                    setQuestion("What is one thing you're grateful for today?");
+                }
             })
             .catch(err => {
                 console.error("Error fetching question:", err);
-                setQuestion("Could not load question");
+                setQuestion("What is one thing that made you smile today?");
             });
     }, []);
 
@@ -147,11 +171,11 @@ function HomePage() {
                         <select 
                             value={selectedEmotion} 
                             onChange={(e) => setSelectedEmotion(e.target.value)}
-                            style={{ fontSize: "1.5rem", border: "none", background: "transparent", padding: "10px" }}
+                            className="emotion-select"
                         >
                             {emotions.map(emotion => (
                                 <option key={emotion._id} value={emotion._id}>
-                                    {emotion.description}
+                                    {emotion.description?.trim() || emotion.description}
                                 </option>
                             ))}
                         </select>
@@ -170,20 +194,28 @@ function HomePage() {
                             value={quickWrite}
                             onChange={(e) => setQuickWrite(e.target.value)}
                             placeholder="Brain dump your thoughts here..."
-                            style={{ width: "100%", height: "100%", border: "none", background: "transparent", resize: "none" }}
                         />
                     </div>
                 </div>
 
                 <div className = "box-wrapper">
                     <div className = "box-title">Question of the Day</div>
-                    <div className = "box box4">
-                        <p style={{ marginBottom: "10px", fontWeight: "bold" }}>{question}</p>
+                    <div className = "box box4" style={{ flexDirection: "column", padding: "15px" }}>
+                        <p style={{ marginBottom: "10px", fontWeight: "bold", fontSize: "0.95rem" }}>{question}</p>
                         <textarea 
                             value={questionAnswer}
                             onChange={(e) => setQuestionAnswer(e.target.value)}
                             placeholder="Your answer..."
-                            style={{ width: "100%", height: "60%", border: "none", background: "rgba(255,255,255,0.3)", resize: "none", padding: "5px" }}
+                            style={{ 
+                                width: "100%", 
+                                flex: 1, 
+                                border: "1px solid rgba(0,0,0,0.1)", 
+                                background: "rgba(255,255,255,0.5)", 
+                                resize: "none", 
+                                padding: "8px",
+                                borderRadius: "5px",
+                                fontFamily: "Inter, sans-serif"
+                            }}
                         />
                     </div>
                 </div>
@@ -192,16 +224,7 @@ function HomePage() {
             <button 
                 onClick={saveMoodEntry} 
                 disabled={isSaving}
-                style={{ 
-                    marginTop: "20px", 
-                    padding: "10px 30px", 
-                    fontSize: "1rem",
-                    cursor: "pointer",
-                    background: "#4CAF50",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "5px"
-                }}
+                className="save-button"
             >
                 {isSaving ? "Saving..." : "Save Entry"}
             </button>
