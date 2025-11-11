@@ -1,7 +1,7 @@
 import React from "react";
 import { FiHome, FiBookOpen } from "react-icons/fi";
+import MoodHeatmap from "./MoodHeatmap";
 import "./HomePage.css";
-
 
 function HomePage() {
     const today = new Date().toLocaleDateString("en-US", {
@@ -43,8 +43,11 @@ function HomePage() {
                     <div className = "box box4">some type of question for the day</div>
                 </div>
             </div>
+
+            <div className = "mood-tracker">
+                <MoodHeatmap />
+            </div>
         </div>
     );
 }
-
 export default HomePage;

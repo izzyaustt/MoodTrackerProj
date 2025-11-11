@@ -1,7 +1,9 @@
 /* general layout */
 .homepage {
+    align-items: flex-start;
     background-color: #F0EEE5;
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: "Inter", sans-serif;
@@ -86,6 +88,73 @@
     color: #333;
     padding: 10px;
     text-align: center;
+}
+.mood-container {
+    border-radius: 15px;
+    padding:10px;
+    margin-top: 285px;
+    margin-left: 750px;
+    background-color: white;
+    width: 700px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Adjust the sidebar width in HomePage.css */
+.mood-tracker-sidebar {
+    width: 550px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1400px) {
+    .mood-tracker-sidebar {
+        width: 450px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .homepage {
+        padding: 15px;
+    }
+
+    .main-content {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .homepage {
+        padding: 10px;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .homepage {
+        padding: 8px;
+    }
+}
+
+/*heatmap*/
+.mood-heatmap-card {
+    background-color: white;
+    margin-top: -20px;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width:650px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+/*mood grid container*/
+.mood-grid {
+    display: grid;
+    margin-top: -30px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
 }
 
 .box1 {
