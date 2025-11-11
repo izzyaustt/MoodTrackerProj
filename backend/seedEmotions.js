@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const Emotion = require('./models/Emotion');
 
-const db_uri = `mongodb+srv://${process.env.db_user}:${encodeURIComponent(process.env.db_pass)}@vidgame-proj.7oy2xv8.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`;
+const db_uri = `mongodb+srv://${process.env.db_user}:${encodeURIComponent(process.env.db_pass)}@moodtracker.3rbfrr1.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`;
 
 const emotions = [
     { name: 'Happy', description: '😊 Feeling joyful and content' },
