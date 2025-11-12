@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LogInPage.css";
 
 import paper from "../Images/LogIn_Paper.png";
 
 function LogInPage() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username:"",
         password: "",
@@ -31,8 +33,11 @@ function LogInPage() {
 
             if(response.ok){
                 setMessage(isRegister ? "Registered successfully!" : "Login successful!");
-                //nav to welcome page
                 console.log("User data:", data.user);
+                // Navigate to HomePage after successful login/register
+                setTimeout(() => {
+                    navigate("/home");
+                }, 1000); // Wait 1 second to show success message
             }else{
                 setMessage(data.message || "It failed :( Try again!");
             }

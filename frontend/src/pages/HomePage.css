@@ -1,9 +1,7 @@
 /* general layout */
 .homepage {
-    align-items: flex-start;
     background-color: #F0EEE5;
     min-height: 100vh;
-    width: 100%;
     display: flex;
     flex-direction: column;
     font-family: "Inter", sans-serif;
@@ -49,14 +47,12 @@
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 320px);
-    grid-template-rows: 320px;
+    grid-template-rows: repeat(2, 320px);
     gap: 1.5rem 2rem;
-    justify-content: start;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
+    justify-content: center;
+    align-items: start;
+    margin: 2rem auto;
+    padding: 0 2rem;
 }
 
 .box-wrapper {
@@ -89,73 +85,6 @@
     padding: 10px;
     text-align: center;
 }
-.mood-container {
-    border-radius: 15px;
-    padding:10px;
-    margin-top: 285px;
-    margin-left: 750px;
-    background-color: white;
-    width: 700px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Adjust the sidebar width in HomePage.css */
-.mood-tracker-sidebar {
-    width: 550px;
-    flex-shrink: 0;
-}
-
-@media (max-width: 1400px) {
-    .mood-tracker-sidebar {
-        width: 450px;
-    }
-}
-
-@media (max-width: 1400px) {
-    .homepage {
-        padding: 15px;
-    }
-
-    .main-content {
-        gap: 15px;
-    }
-}
-
-@media (max-width: 768px) {
-    .homepage {
-        padding: 10px;
-        min-height: 100vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .homepage {
-        padding: 8px;
-    }
-}
-
-/*heatmap*/
-.mood-heatmap-card {
-    background-color: white;
-    margin-top: -20px;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    width:650px;
-    padding: 10px;
-    overflow-x: auto;
-}
-
-/*mood grid container*/
-.mood-grid {
-    display: grid;
-    margin-top: -30px;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
-}
 
 .box1 {
     background-color: #fff9cc; /* yellow */
@@ -171,4 +100,75 @@
 
 .box4 {
     background-color: #CDDAFD; /* blue */
+}
+
+/* Save button */
+.save-button {
+    display: block;
+    margin: 2rem auto 3rem;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+    transition: all 0.2s ease;
+}
+
+.save-button:hover:not(:disabled) {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.save-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Textarea styling */
+.box textarea {
+    font-family: "Inter", sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    resize: none;
+    box-sizing: border-box;
+}
+
+.box textarea::placeholder {
+    color: #999;
+}
+
+.box textarea:focus {
+    outline: none;
+}
+
+/* Emotion select styling */
+.emotion-select {
+    font-size: 1.2rem;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+}
+
+.emotion-select option {
+    text-align: left;
+    padding: 5px;
+}
+
+.emotion-select:focus {
+    outline: 2px solid #1D417B;
+    border-radius: 5px;
 }
