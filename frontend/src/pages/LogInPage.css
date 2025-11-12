@@ -17,8 +17,8 @@
     font-size: 64px;
     margin-top: 100px;
     margin-bottom: 40px;
-    font-family: Indie, cursive;
-    font-weight: normal;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
     color: #333333;
 }
 
@@ -42,11 +42,10 @@
     top: 200px;
     left: 56%;
     transform: translate(-50%, -50%);
-    text-align: left;
     font-size: 32px;
     font-family: 'Indie Flower', cursive;
     color: black;
-    gap: 30px;
+    gap: 50px;
     text-align: center;
 
 
@@ -60,6 +59,7 @@
     border: 2px solid #333333;
     background-color: #fef9f3; /* off-white to match paper texture */
     width: 100%;
+    height: 45px;
     box-sizing: border-box;
 }
 .logInButton {
@@ -90,6 +90,7 @@
     font-size: 24px;
     color: #d9534f;      /* red for errors, you can change to green for success */
     text-align: center;
+    padding-top: 50px;
     margin: 20px 0;
 }
 

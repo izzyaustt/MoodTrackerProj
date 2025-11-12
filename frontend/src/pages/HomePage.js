@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiHome, FiBookOpen } from "react-icons/fi";
+import MoodHeatmap from "./MoodHeatmap";
 import "./HomePage.css";
-
 
 function HomePage() {
     const today = new Date().toLocaleDateString("en-US", {
@@ -221,8 +221,12 @@ function HomePage() {
                 </div>
             </div>
 
-            <button 
-                onClick={saveMoodEntry} 
+            <div className="mood-tracker">
+                <MoodHeatmap />
+            </div>
+
+            <button
+                onClick={saveMoodEntry}
                 disabled={isSaving}
                 className="save-button"
             >

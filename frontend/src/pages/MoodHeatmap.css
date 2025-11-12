@@ -1,0 +1,202 @@
+.mood-max-width {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.mood-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mood-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    font-family: "Indie Flower", sans-serif;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.mood-subtitle {
+    font-size: 10px;
+    font-family: "Indie Flower", sans-serif;
+    margin-top: -5px;
+    margin-bottom: 45px;
+    color: #4b5563;
+}
+
+.mood-day-label {
+    height: 12px;
+    font-size: 0.75rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+}
+
+.mood-month-label {
+    height: 12px;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.mood-day-cell {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mood-day-cell:hover {
+    transform: scale(1.1);
+}
+
+.mood-day-cell.selected {
+    transform: scale(1.25);
+    outline: 2px solid #3b82f6;
+    outline-offset: 1px;
+}
+
+.mood-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.mood-legend-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+/*mood select panel*/
+.mood-selector {
+    width: 650px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+/*current day date*/
+.mood-selector-title {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Indie Flower", sans-serif;
+    color: #111827;
+    margin-top: -4px;
+    margin-bottom: 15px;
+}
+
+.mood-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mood-button:hover {
+    background-color: #f9fafb;
+    border-color: #e5e7eb;
+    width:100px;
+    height: 60px;
+    margin-top: -10px;
+}
+
+.mood-color-box {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+}
+
+.mood-label {
+    font-size: 12px;
+    font-family: "Indie Flower", sans-serif;
+}
+
+.mood-cancel-button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.mood-cancel-button:hover {
+    color: #111827;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mood-container {
+        padding: 1rem;
+    }
+
+    .mood-stats-container {
+        flex-direction: column;
+    }
+
+    .mood-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*testing*/
+/* Main content layout */
+.main-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Grid takes up left side */
+.grid-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Heatmap takes up right side */
+.mood-tracker-sidebar {
+    width: 600px;
+    flex-shrink: 0;
+}
+/* Responsive -stack vertically */
+@media (max-width: 1400px) {
+    .mood-tracker-sidebar {
+        width: 500%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .mood-tracker-sidebar {
+        width: 100%;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
