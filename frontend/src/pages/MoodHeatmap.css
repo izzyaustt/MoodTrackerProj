@@ -25,8 +25,8 @@
 }
 
 .mood-day-label {
-    height: 12px;
-    font-size: 0.75rem;
+    height: auto;
+    /*font-size: 0.75rem;*/
     color: #6b7280;
     display: flex;
     align-items: center;
@@ -39,8 +39,8 @@
 }
 
 .mood-day-cell {
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.2s;
@@ -72,7 +72,8 @@
 }
 /*mood select panel*/
 .mood-selector {
-    width: 650px;
+    width: 100%;
+    max-width: 650px;
     height: 50px;
     margin-top: 10px;
     background-color: white;
@@ -95,13 +96,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     border: 2px solid transparent;
-    background-color: transparent;
+    background-color: #f9fafb;
     cursor: pointer;
     transition: all 0.2s;
+    min-width: 60px;
 }
 
 .mood-button:hover {
@@ -151,6 +154,10 @@
 
     .mood-grid {
         grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        gap: 0.5rem;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 }
 
@@ -178,7 +185,7 @@
 /* Responsive -stack vertically */
 @media (max-width: 1400px) {
     .mood-tracker-sidebar {
-        width: 500%;
+        width: 100%;
     }
 }
 
