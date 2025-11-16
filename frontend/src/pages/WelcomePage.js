@@ -21,17 +21,9 @@ function WelcomePage() {
                 style={{ cursor: "pointer" }}
             />
             <p className="welcome-subtitle">it's the small things that matter 🤍</p>
-            <button 
+            <button
+                className="button"
                 onClick={handleGetStarted}
-                style={{
-                    marginTop: "20px",
-                    padding: "10px 30px",
-                    fontSize: "16px",
-                    cursor: "pointer",
-                    backgroundColor: "#f5f5f5",
-                    border: "2px solid #333",
-                    borderRadius: "5px"
-                }}
             >
                 Get Started
             </button>
