@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 }
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
 .welcome-container {
     position: relative;
     height: 100vh;
@@ -56,9 +61,12 @@
 
 .welcome-image {
     position: absolute;
-    bottom: 25vh;
+    bottom: 15vh;
     left: 9%;
-    width: 600px;
+    min-width: 600px;
+    max-width: 600px;
+    width: 40%;
+    height: auto;
     z-index:3;
 }
 
@@ -68,8 +76,10 @@
     text-transform: lowercase;
     line-height: 1.2;
     text-align: left;
-    margin-top: 840px;
     font-family: "Poppins", sans-serif;
     letter-spacing: 2px;
+    position: absolute;
+    bottom: 10vh;
+    max-width: 80%;
 }
 

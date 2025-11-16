@@ -1,20 +1,17 @@
 //eslint-disable
 require('dotenv').config();
+console.log('Mongo URI:', process.env.db_uri);
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const db_uri = `mongodb+srv://${process.env.db_user}:${encodeURIComponent(process.env.db_pass)}@moodtracker.3rbfrr1.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`;
-console.log('Connecting to MongoDB...');
+const db_uri = `mongodb+srv://${process.env.db_user}:${encodeURIComponent(process.env.db_pass)}@vidgame-proj.7oy2xv8.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`;
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true,
-}));
+app.use(cors());
 
 // Session setup
 app.use(session({
@@ -34,12 +31,10 @@ mongoose.connect(db_uri)
 const authRoutes = require('./routes/auth');
 const moodRoutes = require('./routes/mood');
 const apiRoutes = require('./routes/api');
-const emotionRoutes = require('./routes/emotion');
 
 app.use('/auth', authRoutes);
 app.use('/mood', moodRoutes);
 app.use('/api', apiRoutes);
-app.use('/emotions', emotionRoutes);
 
 app.get('/', (req, res) => res.send('Hello backend!'));
 
