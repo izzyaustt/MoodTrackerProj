@@ -172,3 +172,32 @@
     outline: 2px solid #1D417B;
     border-radius: 5px;
 }
+
+.timer-display {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.start-timer-button {
+    margin-top: 8px;
+    padding: 6px 15px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: #1D417B;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.start-timer-button:hover:not(:disabled) {
+    background: #16345A;
+}
+
+.start-timer-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}

@@ -30,6 +30,10 @@ function HomePage() {
     const [currentEntryId, setCurrentEntryId] = useState(null);
     const [isSaving, setIsSaving] = useState(false);
 
+    //timer states
+    const [timeLeft, setTimeLeft] = useState(180); // 3 minutes
+    const [isRunning, setIsRunning] = useState(false);
+
     // Fetch emotions from backend (with fallback)
     useEffect(() => {
         fetch("http://localhost:5000/emotions")
@@ -152,6 +156,33 @@ function HomePage() {
         }
     };
 
+    useEffect(() => {
+        if (!isRunning) return;
+
+        if (timeLeft <= 0) {
+            setIsRunning(false);
+            alert("Time's up! Great job journaling!");
+            return;
+        }
+
+        const timerId = setInterval(() => {
+            setTimeLeft(prev => prev - 1);
+        }, 1000);
+
+        return () => clearInterval(timerId);
+    }, [isRunning, timeLeft]);
+
+    const startTimer = () => {
+        setTimeLeft(180);
+        setIsRunning(true);
+    };
+
+    const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
     return (
         <div className = "homepage">
             {/* date bar */}
@@ -187,14 +218,23 @@ function HomePage() {
                     <div className = "box box2">{quote}</div>
                 </div>
 
-                <div className = "box-wrapper">
-                    <div className = "box-title">3 Minutes Writing</div>
-                    <div className = "box box3">
+                {/* 3 Minutes Writing with Timer */}
+                <div className="box-wrapper">
+                    <div className="box-title">3 Minutes Journaling</div>
+                    <div className="box box3" style={{ flexDirection: "column", padding: "10px" }}>
+                        <div className="timer-display">{formatTime(timeLeft)}</div>
                         <textarea 
                             value={quickWrite}
                             onChange={(e) => setQuickWrite(e.target.value)}
                             placeholder="Brain dump your thoughts here..."
                         />
+                        <button 
+                            onClick={startTimer} 
+                            className="start-timer-button" 
+                            disabled={isRunning}
+                        >
+                            {isRunning ? "Running..." : "Start 3-min Timer"}
+                        </button>
                     </div>
                 </div>
 
