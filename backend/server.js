@@ -1,4 +1,3 @@
-//eslint-disable
 require('dotenv').config();
 console.log('Mongo URI:', process.env.db_uri);
 const express = require('express');
